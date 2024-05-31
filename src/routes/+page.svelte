@@ -138,38 +138,9 @@
 		</div>
 		<div class="space-y-10 text-center flex flex-col items-center">
 			<section class="card">
-				<div class="chat w-full h-full grid grid-cols-1 lg:grid-cols-[30%_1fr]">
-					<!-- Navigation -->
-					<div class="hidden lg:grid grid-rows-[auto_1fr_auto] border-r border-surface-500/30">
-						<!-- Header -->
-						<header class="border-b border-surface-500/30 p-4">
-							<input class="input" type="search" placeholder="Search..." />
-						</header>
-						<!-- List -->
-						<div class="p-4 space-y-4 overflow-y-auto">
-							<small class="opacity-50">Contacts</small>
-							<div class="flex flex-col space-y-1">
-								{#each people as person}
-									<button
-										type="button"
-										class="btn w-full flex items-center space-x-4 {person.id === currentPersonId
-											? 'variant-filled-primary'
-											: 'bg-surface-hover-token'}"
-										on:click={() => (currentPersonId = person.id)}
-									>
-										<Avatar initials="MR" width="w-8" />
-										<span class="flex-1 text-start">
-											{person.name}
-										</span>
-									</button>
-								{/each}
-							</div>
-						</div>
-						<!-- Footer -->
-						<!-- <footer class="border-t border-surface-500/30 p-4">(footer)</footer> -->
-					</div>
+				<div class="chat w-full h-full grid grid-cols-1">
 					<!-- Chat -->
-					<div class="grid grid-row-[1fr_auto]">
+					<div class="grid grid-row-[1fr_auto] items-center">
 						<!-- Conversation -->
 						<section bind:this={elemChat} class="max-h-[500px] p-4 overflow-y-auto space-y-4">
 							{#each messageFeed as bubble}
