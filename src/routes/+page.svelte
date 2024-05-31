@@ -25,19 +25,10 @@
 	let messageFeed: MessageFeed[] = [
 		{
 			id: 0,
-			host: true,
-			avatar: 48,
-			name: 'User',
-			timestamp: 'Yesterday @ 2:30pm',
-			message: lorem,
-			color: 'variant-soft-primary'
-		},
-		{
-			id: 1,
 			host: false,
-			avatar: 14,
+			avatar: 48,
 			name: 'Maruta',
-			timestamp: 'Yesterday @ 2:45pm',
+			timestamp: `Hoy @ ${getCurrentTimestamp()}`,
 			message: lorem,
 			color: 'variant-soft-primary'
 		},
@@ -55,12 +46,15 @@
 	}
 
 	function addMessage(): void {
+
+		if(currentMessage === '') return; 
+		
 		const newMessage = {
 			id: messageFeed.length,
 			host: true,
 			avatar: 48,
-			name: 'Jane',
-			timestamp: `Today @ ${getCurrentTimestamp()}`,
+			name: 'User',
+			timestamp: `Hoy @ ${getCurrentTimestamp()}`,
 			message: currentMessage,
 			color: 'variant-soft-primary'
 		};
@@ -162,7 +156,7 @@
 							{/each}
 						</section>
 						<!-- Prompt -->
-						<section class="border-t border-surface-500/30 p-4">
+						<section class="border-t border-surface-500/30 p-4 w-full">
 							<div class="input-group input-group-divider grid-cols-[auto_1fr_auto] rounded-container-token">
 								<button class="input-group-shim">+</button>
 								<textarea
