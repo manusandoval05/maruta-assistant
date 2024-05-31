@@ -18,18 +18,8 @@
 	}
 
 	let elemChat: HTMLElement;
-	const lorem = "This is a really fake text for testing";
+	const lorem = "This is a really fake text for testing. I'm going to make this a big a message as possible. Because we have to chase him. Because he's the hero Gotham deserves, but not the one it needs right now, so we'll hunt him. Because he can take it, because he's not a hero. He's a silent guardian, a watchful protector, a Dark Knight.";
 
-	// Navigation List
-	const people: Person[] = [
-		{ id: 0, avatar: 14, name: 'Michael' },
-		{ id: 1, avatar: 40, name: 'Janet' },
-		{ id: 2, avatar: 31, name: 'Susan' },
-		{ id: 3, avatar: 56, name: 'Joey' },
-		{ id: 4, avatar: 24, name: 'Lara' },
-		{ id: 5, avatar: 9, name: 'Melissa' }
-	];
-	let currentPersonId: number = people[0].id;
 
 	// Messages
 	let messageFeed: MessageFeed[] = [
@@ -117,9 +107,37 @@
 </script>
 
 <div class="h-full">
-	<div class="grid grid-cols-2 h-full items-center">
-		<div class="space-y-10 text-center flex flex-col items-center">
-			<h2 class="h2">Mapa de Ruta de Talento y Economía Digital MX</h2>
+	
+	<div class="grid grid-cols-2 gap-3 h-full items-center">
+		<div class="space-y-10 flex flex-col items-center ml-5">
+			<h2 class="h2">¡Bienvenidos al Mapa de Ruta de Talento y Economía Digital de Nuevo León!</h2>
+			<p>En un mundo cada vez más digitalizado y competitivo, Nuevo León se destaca como un líder en innovación y competitividad en México.</p>
+			<p>Este Mapa de Ruta tiene identificados los desafíos, oportunidades y acciones prioritarias para acelerar la transición de Nuevo León hacia una economía basada en el conocimiento y la innovación digital.</p>
+			<h3 class="h3">Objetivos estratégicos para Nuevo León</h3>
+			<div class="text-left">
+				<ol class="list">
+					<li>
+						<span class="badge-icon p-4 variant-soft-primary">1.</span>
+						<span class="flex-auto">Atracción de inversiones en sectores de vanguardia.</span>
+					</li>
+					<li>
+						<span class="badge-icon p-4 variant-soft-primary">2.</span>
+						<span class="flex-auto">Transformación del sistema educativo para formar los talentos del futuro.</span>
+					</li>
+					<li>
+						<span class="badge-icon p-4 variant-soft-primary">3.</span>
+						<span class="flex-auto">Fomento de la innovación y el emprendimiento.</span>
+					</li>
+					<li>
+						<span class="badge-icon p-4 variant-soft-primary">4.</span>
+						<span class="flex-auto">Desarrollo de infraestructuras tecnológicas avanzadas.</span>
+					</li>
+					<li>
+						<span class="badge-icon p-4 variant-soft-primary">5.</span>
+						<span class="flex-auto">Promoción de una cultura digital inclusiva y sostenible.</span>
+					</li>
+				</ol>
+			</div>
 			<div class="flex justify-center space-x-2">
 				<a
 					class="btn variant-filled"
@@ -130,11 +148,6 @@
 					Launch Documentation
 				</a>
 			</div>
-			<div class="space-y-2">
-				<p>Try editing the following:</p>
-				<p><code class="code">/src/routes/+layout.svelte</code></p>
-				<p><code class="code">/src/routes/+page.svelte</code></p>
-			</div>
 		</div>
 		<div class="space-y-10 text-center flex flex-col items-center">
 			<section class="card">
@@ -144,27 +157,24 @@
 						<!-- Conversation -->
 						<section bind:this={elemChat} class="max-h-[500px] p-4 overflow-y-auto space-y-4">
 							{#each messageFeed as bubble}
-								{#if bubble.host === true}
+								{#if bubble.host === false}
 									<div class="grid grid-cols-[auto_1fr] gap-2">
-										<Avatar src="https://i.pravatar.cc/?img={bubble.avatar}" width="w-12" />
 										<div class="card p-4 variant-soft rounded-tl-none space-y-2">
 											<header class="flex justify-between items-center">
 												<p class="font-bold">{bubble.name}</p>
 												<small class="opacity-50">{bubble.timestamp}</small>
 											</header>
-											<p>{bubble.message}</p>
+											<p class="text-left">{bubble.message}</p>
 										</div>
 									</div>
 								{:else}
 									<div class="grid grid-cols-[1fr_auto] gap-2">
 										<div class="card p-4 rounded-tr-none space-y-2 {bubble.color}">
 											<header class="flex justify-between items-center">
-												<p class="font-bold">{bubble.name}</p>
 												<small class="opacity-50">{bubble.timestamp}</small>
 											</header>
-											<p>{bubble.message}</p>
+											<p class="text-left">{bubble.message}</p>
 										</div>
-										<Avatar src="https://i.pravatar.cc/?img={bubble.avatar}" width="w-12" />
 									</div>
 								{/if}
 							{/each}
