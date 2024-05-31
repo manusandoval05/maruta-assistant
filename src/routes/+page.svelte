@@ -1,8 +1,9 @@
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 
-<div class="container h-full mx-auto flex justify-center items-center">
-	<div class="grid grid-cols-2">
+<div class="h-full">
+	<div class="grid grid-cols-2 h-full">
 		<div class="space-y-10 text-center flex flex-col items-center">
+			<h2 class="h2">Mapa de Ruta de Talento y Economía Digital MX</h2>
 			<div class="flex justify-center space-x-2">
 				<a
 					class="btn variant-filled"
