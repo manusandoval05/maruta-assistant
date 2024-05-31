@@ -117,7 +117,7 @@
 </script>
 
 <div class="h-full">
-	<div class="grid grid-cols-2 h-full">
+	<div class="grid grid-cols-2 h-full items-center">
 		<div class="space-y-10 text-center flex flex-col items-center">
 			<h2 class="h2">Mapa de Ruta de Talento y Economía Digital MX</h2>
 			<div class="flex justify-center space-x-2">
@@ -140,7 +140,7 @@
 			<section class="card">
 				<div class="chat w-full h-full grid grid-cols-1">
 					<!-- Chat -->
-					<div class="grid grid-row-[1fr_auto] items-center">
+					<div class="grid grid-row-[1fr_auto]">
 						<!-- Conversation -->
 						<section bind:this={elemChat} class="max-h-[500px] p-4 overflow-y-auto space-y-4">
 							{#each messageFeed as bubble}
