@@ -1,7 +1,8 @@
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 <script lang="ts">
 	import { onMount } from "svelte";
-	import { Avatar } from "@skeletonlabs/skeleton";
+	import { convertMarkdownToHtml } from "$lib";
+
 	interface Person {
 		id: number;
 		avatar: number;
@@ -18,7 +19,7 @@
 	}
 
 	let elemChat: HTMLElement;
-	const lorem = "Hola, soy Maruta. Estoy aquí para contestar cualquier pregunta respecto al plan de Nuevo León hacia un futuro con una economía digital con más talento";
+	const lorem = "Hola, soy Maruta. Estoy aquí para contestar cualquier pregunta respecto al plan de Nuevo León hacia un futuro con una economía digital con más talento.";
 
 
 	// Messages
@@ -99,13 +100,15 @@
 
 						assistantMessage += element.text.value;
 
+						const curatedMessage = convertMarkdownToHtml(assistantMessage);
+
 						const assistantMessageBubble = {
 							id: messageFeed.length,
 							host: false,
 							avatar: 48,
 							name: 'Maruta',
 							timestamp: `Hoy @ ${getCurrentTimestamp()}`,
-							message: assistantMessage,
+							message: curatedMessage,
 							color: 'variant-soft-primary'
 						};
 						messageFeed.pop();
@@ -198,7 +201,9 @@
 												<p class="font-bold">{bubble.name}</p>
 												<small class="opacity-50">{bubble.timestamp}</small>
 											</header>
-											<p class="text-left">{bubble.message}</p>
+											<div class="text-left">
+												{@html bubble.message}
+											</div>
 										</div>
 									</div>
 								{:else}
