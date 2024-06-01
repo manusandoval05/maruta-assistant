@@ -79,7 +79,7 @@
 			id: messageFeed.length,
 			host: false,
 			avatar: 48,
-			name: 'User',
+			name: 'Maruta',
 			timestamp: `Hoy @ ${getCurrentTimestamp()}`,
 			message: assistantMessage,
 			color: 'variant-soft-primary'
