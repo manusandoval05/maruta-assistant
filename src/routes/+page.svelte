@@ -48,7 +48,7 @@
 	function addMessage(): void {
 
 		if(currentMessage === '') return; 
-		
+
 		const newMessage = {
 			id: messageFeed.length,
 			host: true,
@@ -121,7 +121,7 @@
 					target="_blank"
 					rel="noreferrer"
 				>
-					Launch Documentation
+					Descargar Mapa
 				</a>
 			</div>
 		</div>
