@@ -58,6 +58,8 @@
 			message: currentMessage,
 			color: 'variant-soft-primary'
 		};
+		// Clear prompt
+		currentMessage = '';
 		// Update the message feed
 		messageFeed = [...messageFeed, newMessage];
 
@@ -70,13 +72,46 @@
 				'content-type': "application/json",
 			}
 		})
-		let finalText = "";
+		let assistantMessage = "";
+
+		// Add message bubble for assistant
+		const emptyMessageBubble = {
+			id: messageFeed.length,
+			host: false,
+			avatar: 48,
+			name: 'User',
+			timestamp: `Hoy @ ${getCurrentTimestamp()}`,
+			message: assistantMessage,
+			color: 'variant-soft-primary'
+		};
+
+		messageFeed = [ ...messageFeed, emptyMessageBubble ];
+
+
 		for await (const chunk of response.body) {
 			try{
 				const chunkText = new TextDecoder().decode(chunk);
 				const chunkJson = JSON.parse(chunkText);
 				if(chunkJson.event === "thread.message.delta") {
-					chunkJson.data.delta.content.forEach(element => console.log(element.text.value));
+					chunkJson.data.delta.content.forEach(element => {
+						
+						console.log(element.text.value);
+
+						assistantMessage += element.text.value;
+
+						const assistantMessageBubble = {
+							id: messageFeed.length,
+							host: false,
+							avatar: 48,
+							name: 'Maruta',
+							timestamp: `Hoy @ ${getCurrentTimestamp()}`,
+							message: assistantMessage,
+							color: 'variant-soft-primary'
+						};
+						messageFeed.pop();
+						messageFeed = [...messageFeed, assistantMessageBubble];
+
+					})
 				}
 			}
 			catch(error) {
@@ -84,8 +119,7 @@
 			}
 			
 		}
-		// Clear prompt
-		currentMessage = '';
+		
 		// Smooth scroll to bottom
 		// Timeout prevents race condition
 		setTimeout(() => {
