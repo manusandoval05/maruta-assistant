@@ -70,7 +70,20 @@
 				'content-type': "application/json",
 			}
 		})
-		console.log(response);
+		let finalText = "";
+		for await (const chunk of response.body) {
+			try{
+				const chunkText = new TextDecoder().decode(chunk);
+				const chunkJson = JSON.parse(chunkText);
+				if(chunkJson.event === "thread.message.delta") {
+					chunkJson.data.delta.content.forEach(element => console.log(element.text.value));
+				}
+			}
+			catch(error) {
+				console.log(error);
+			}
+			
+		}
 		// Clear prompt
 		currentMessage = '';
 		// Smooth scroll to bottom
