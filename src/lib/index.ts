@@ -2,12 +2,12 @@
 
 export function convertMarkdownToHtml(markdownText: string) {
     // Convert headings
-    markdownText = markdownText.replace(/^###### (.*?)$/gm, '<h6 class="h6">$1</h6>');
-    markdownText = markdownText.replace(/^##### (.*?)$/gm, '<h5 class="h5">$1</h5>');
-    markdownText = markdownText.replace(/^#### (.*?)$/gm, '<h4 class="h4">$1</h4>');
-    markdownText = markdownText.replace(/^### (.*?)$/gm, '<h3 class="h3">$1</h3>');
-    markdownText = markdownText.replace(/^## (.*?)$/gm, '<h class="h2">$1</h2>');
-    markdownText = markdownText.replace(/^# (.*?)$/gm, '<h1 class="h1">$1</h1>');
+    markdownText = markdownText.replace(/^###### (.*?)$/gm, '<h6 class="h6 mb-3">$1</h6>');
+    markdownText = markdownText.replace(/^##### (.*?)$/gm, '<h5 class="h5 mb-3">$1</h5>');
+    markdownText = markdownText.replace(/^#### (.*?)$/gm, '<h4 class="h4 mb-3">$1</h4>');
+    markdownText = markdownText.replace(/^### (.*?)$/gm, '<h3 class="h3 mb-3">$1</h3>');
+    markdownText = markdownText.replace(/^## (.*?)$/gm, '<h class="h2 mb-3">$1</h2>');
+    markdownText = markdownText.replace(/^# (.*?)$/gm, '<h1 class="h1 mb-3">$1</h1>');
 
     // Convert bold and italic text
     markdownText = markdownText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
