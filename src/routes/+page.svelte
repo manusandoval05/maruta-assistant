@@ -198,7 +198,7 @@
 									<div class="grid grid-cols-[auto_1fr] gap-2">
 										<div class="card p-4 variant-soft rounded-tl-none space-y-2">
 											<header class="flex justify-between items-center">
-												<p class="font-bold">{bubble.name}</p>
+												<p class="font-bold mr-1">{bubble.name}</p>
 												<small class="opacity-50">{bubble.timestamp}</small>
 											</header>
 											<div class="text-left">
