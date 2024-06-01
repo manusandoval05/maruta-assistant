@@ -45,7 +45,7 @@
 		return new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
 	}
 
-	function addMessage(): void {
+	async function addMessage() {
 
 		if(currentMessage === '') return; 
 
@@ -61,15 +61,16 @@
 		// Update the message feed
 		messageFeed = [...messageFeed, newMessage];
 
-		const response = fetch("api/post-message", {
+		const response = await fetch("api/post-message", {
 			method: 'POST',
 			body: JSON.stringify({
-
+				messageFeed: messageFeed
 			}),
 			headers: {
 				'content-type': "application/json",
 			}
 		})
+		console.log(response);
 		// Clear prompt
 		currentMessage = '';
 		// Smooth scroll to bottom

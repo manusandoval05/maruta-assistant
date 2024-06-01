@@ -7,19 +7,25 @@ const openai = new OpenAI({
 export async function POST({ request }){
 
     const body = await request.json();
+
     const messages = body.messageFeed;
     const assistant = await openai.beta.assistants.retrieve(PRIVATE_ASSISTANT_ID);
 
     const thread = await openai.beta.threads.create();
 
     const userQuestion = messages.at(-1);
+
+    console.log(userQuestion);
+
     const message = await openai.beta.threads.messages.create(
         thread.id,
         {
             role: "user",
-            content: userQuestion ? userQuestion.content : ""
+            content: userQuestion ? userQuestion.message : ""
         }
-    )
+    );
+
+    console.log("Message ok");
 
     // We use the stream SDK helper to create a run with
     // streaming. The SDK provides helpful event listeners to handle 
@@ -33,10 +39,9 @@ export async function POST({ request }){
     const stream = await openai.beta.threads.runs.create(thread.id, 
         { assistant_id: assistant.id, stream: true}
     )
-    stream.toReadableStream().pipeTo(writable);
-    
+
     return new Response(
-        readable,
+        stream.toReadableStream(),
         {
             headers: {
                 "Content-Type": "text/event-stream"
