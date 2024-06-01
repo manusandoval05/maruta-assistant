@@ -28,11 +28,6 @@ export async function POST({ request }){
     console.log("Message ok");
 
     // We use the stream SDK helper to create a run with
-    // streaming. The SDK provides helpful event listeners to handle 
-    // the streamed response.
-    let { readable, writable } = new TransformStream(); 
-
-    // We use the stream SDK helper to create a run with
 // streaming. The SDK provides helpful event listeners to handle 
 // the streamed response.
  
