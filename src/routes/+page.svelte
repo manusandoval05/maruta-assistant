@@ -92,12 +92,12 @@
 		for await (const chunk of response.body) {
 			try{
 				const chunkText = new TextDecoder().decode(chunk);
+
+				console.log(chunkText);
 				const chunkJson = JSON.parse(chunkText);
 				if(chunkJson.event === "thread.message.delta") {
 					chunkJson.data.delta.content.forEach(element => {
 						
-						console.log(element.text.value);
-
 						assistantMessage += element.text.value;
 
 						const curatedMessage = convertMarkdownToHtml(assistantMessage);
@@ -113,8 +113,33 @@
 						};
 						messageFeed.pop();
 						messageFeed = [...messageFeed, assistantMessageBubble];
+						setTimeout(() => {
+							scrollChatBottom('smooth');
+						}, 0);
 
 					})
+				}
+				else if(chunkJson.event === "thread.message.completed"){
+					chunkJson.data.content.forEach(element => {
+						const completedMessage = element.text.value;
+						const curatedMessage = convertMarkdownToHtml(completedMessage);
+
+						const assistantMessageBubble = {
+							id: messageFeed.length,
+							host: false,
+							avatar: 48,
+							name: 'Maruta',
+							timestamp: `Hoy @ ${getCurrentTimestamp()}`,
+							message: curatedMessage,
+							color: 'variant-soft-primary'
+						};
+						messageFeed.pop();
+						messageFeed = [...messageFeed, assistantMessageBubble];
+
+						setTimeout(() => {
+							scrollChatBottom('smooth');
+						}, 0);
+					});
 				}
 			}
 			catch(error) {
