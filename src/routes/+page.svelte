@@ -18,7 +18,7 @@
 	}
 
 	let elemChat: HTMLElement;
-	const lorem = "This is a really fake text for testing. I'm going to make this a big a message as possible. Because we have to chase him. Because he's the hero Gotham deserves, but not the one it needs right now, so we'll hunt him. Because he can take it, because he's not a hero. He's a silent guardian, a watchful protector, a Dark Knight.";
+	const lorem = "Hola, soy Maruta. Estoy aquí para contestar cualquier pregunta respecto al plan de Nuevo León hacia un futuro con una economía digital con más talento";
 
 
 	// Messages
@@ -222,7 +222,7 @@
 									class="bg-transparent border-0 ring-0"
 									name="prompt"
 									id="prompt"
-									placeholder="Write a message..."
+									placeholder="Mensaje..."
 									rows="1"
 									on:keydown={onPromptKeydown}
 								></textarea>
