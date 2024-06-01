@@ -60,6 +60,16 @@
 		};
 		// Update the message feed
 		messageFeed = [...messageFeed, newMessage];
+
+		const response = fetch("api/post-message", {
+			method: 'POST',
+			body: JSON.stringify({
+
+			}),
+			headers: {
+				'content-type': "application/json",
+			}
+		})
 		// Clear prompt
 		currentMessage = '';
 		// Smooth scroll to bottom

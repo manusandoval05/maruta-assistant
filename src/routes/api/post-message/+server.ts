@@ -25,39 +25,16 @@ export async function POST({ request }){
     // streaming. The SDK provides helpful event listeners to handle 
     // the streamed response.
     let { readable, writable } = new TransformStream(); 
-    const writer = writable.getWriter();
+
     // We use the stream SDK helper to create a run with
 // streaming. The SDK provides helpful event listeners to handle 
 // the streamed response.
  
-    const run = openai.beta.threads.runs.stream(thread.id, {
-        assistant_id: assistant.id
-    })
-    .on('textCreated', (text) => {
-        writer.write({ event: 'textCreated', data: { message: 'assistant > ' } });
-    })
-    .on('textDelta', (textDelta, snapshot) => {
-        writer.write({ event: 'textDelta', data: { message: textDelta.value } });
-    })
-    .on('toolCallCreated', (toolCall) => {
-        writer.write({ event: 'toolCallCreated', data: { message: `assistant > ${toolCall.type}` } });
-    })
-    .on('toolCallDelta', (toolCallDelta, snapshot) => {
-        if (toolCallDelta.type === 'code_interpreter') {
-            if (toolCallDelta.code_interpreter.input) {
-                writer.write({ event: 'toolCallDelta', data: { message: toolCallDelta.code_interpreter.input } });
-            }
-            if (toolCallDelta.code_interpreter.outputs) {
-                writer.write({ event: 'toolCallDelta', data: { message: "output >\n" } });
-                toolCallDelta.code_interpreter.outputs.forEach(output => {
-                    if (output.type === "logs") {
-                        writer.write({ event: 'toolCallDelta', data: { message: output.logs } });
-                    }
-                });
-            }
-        }
-    });
-
+    const stream = await openai.beta.threads.runs.create(thread.id, 
+        { assistant_id: assistant.id, stream: true}
+    )
+    stream.toReadableStream().pipeTo(writable);
+    
     return new Response(
         readable,
         {
