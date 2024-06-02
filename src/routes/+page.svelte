@@ -170,7 +170,7 @@
 
 <div class="h-full">
 	
-	<div class="grid grid-cols-2 gap-3 h-full items-center">
+	<div class="grid md:grid-cols-2 grid-cols-1 gap-3 h-full items-center">
 		<div class="space-y-10 flex flex-col items-center ml-5">
 			<h2 class="h2">¡Bienvenidos al Mapa de Ruta de Talento y Economía Digital de Nuevo León!</h2>
 			<p>En un mundo cada vez más digitalizado y competitivo, Nuevo León se destaca como un líder en innovación y competitividad en México.</p>
