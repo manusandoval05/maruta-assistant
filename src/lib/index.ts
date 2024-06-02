@@ -27,7 +27,7 @@ export function convertMarkdownToHtml(markdownText: string) {
 
     // Convert paragraphs
     markdownText = markdownText.replace(/\n\n/g, '</p><p>');
-    markdownText = '<p class="mb-3">' + markdownText + '</p>';
+    markdownText = '<p class="mb-4">' + markdownText + '</p>';
     markdownText = markdownText.replace(/<\/p><p>/g, '</p>\n<p>');
 
     return markdownText;
