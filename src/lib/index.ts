@@ -6,7 +6,7 @@ export function convertMarkdownToHtml(markdownText: string) {
     markdownText = markdownText.replace(/^##### (.*?)$/gm, '<h5 class="h5 mb-3">$1</h5>');
     markdownText = markdownText.replace(/^#### (.*?)$/gm, '<h4 class="h4 mb-3">$1</h4>');
     markdownText = markdownText.replace(/^### (.*?)$/gm, '<h3 class="h3 mb-3">$1</h3>');
-    markdownText = markdownText.replace(/^## (.*?)$/gm, '<h class="h2 mb-3">$1</h2>');
+    markdownText = markdownText.replace(/^## (.*?)$/gm, '<h2 class="h2 mb-3">$1</h2>');
     markdownText = markdownText.replace(/^# (.*?)$/gm, '<h1 class="h1 mb-3">$1</h1>');
 
     // Convert bold and italic text
