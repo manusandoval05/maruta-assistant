@@ -252,7 +252,7 @@
 									class="bg-transparent border-0 ring-0"
 									name="prompt"
 									id="prompt"
-									placeholder="Mensaje..."
+									placeholder="Pregunta..."
 									rows="1"
 									on:keydown={onPromptKeydown}
 								></textarea>
