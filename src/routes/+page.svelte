@@ -234,7 +234,7 @@
 								{:else}
 									<div class="grid grid-cols-[1fr_auto] gap-2">
 										<div class="card p-4 rounded-tr-none space-y-2 {bubble.color}">
-											<header class="flex justify-end items-center">
+											<header class="flex items-center">
 												<small class="opacity-50">{bubble.timestamp}</small>
 											</header>
 											<p class="text-left">{bubble.message}</p>
