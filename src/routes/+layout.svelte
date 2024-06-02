@@ -9,7 +9,7 @@
 		<!-- App Bar -->
 		<AppBar>
 			<svelte:fragment slot="lead">
-				<strong class="text-xl uppercase">Mapa de Ruta de Talento y Economía Digital MX</strong>
+				<strong class="text-xl uppercase">Maruta</strong>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<a
