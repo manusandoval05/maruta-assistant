@@ -1,9 +1,11 @@
-<!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { convertMarkdownToHtml } from '$lib';
 	import { PUBLIC_RECAPTCHA_KEY } from '$env/static/public';
+	import { AUTOCOMPLETE_QUESTIONS } from '$lib/questions';
 
+	import { Autocomplete } from '@skeletonlabs/skeleton';
+	import type { AutocompleteOption } from '@skeletonlabs/skeleton';
 	interface Person {
 		id: number;
 		avatar: number;
@@ -18,6 +20,8 @@
 		message: string;
 		color: string;
 	}
+
+	const questionOptions: AutocompleteOption<string>[] = AUTOCOMPLETE_QUESTIONS;
 
 	let elemChat: HTMLElement;
 	const lorem =
@@ -46,7 +50,11 @@
 	function getCurrentTimestamp(): string {
 		return new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
 	}
-
+	
+	function onQuestionSelection(event: CustomEvent<AutocompleteOption<string>>): void {
+		currentMessage = event.detail.label;
+	}
+				
 	async function addMessage() {
 		if (currentMessage === '') return;
 
@@ -289,6 +297,11 @@
 									</svg>
 								</button>
 							</div>
+							
+							<div class="card text-left w-full max-h-48 p-4 overflow-y-auto" tabindex="-1">
+								<Autocomplete bind:input={currentMessage} options={questionOptions} on:selection={onQuestionSelection} />
+							</div>
+
 						</section>
 					</div>
 				</div>
