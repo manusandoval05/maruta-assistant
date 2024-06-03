@@ -53,8 +53,8 @@ export async function POST({ request }){
 
 
     // We use the stream SDK helper to create a run with
-// streaming. The SDK provides helpful event listeners to handle 
-// the streamed response.
+    // streaming. The SDK provides helpful event listeners to handle 
+    // the streamed response.
  
     const stream = await openai.beta.threads.runs.create(thread.id, 
         { assistant_id: assistant.id, stream: true}
