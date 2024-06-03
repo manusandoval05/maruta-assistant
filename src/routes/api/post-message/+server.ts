@@ -1,6 +1,6 @@
 import { PRIVATE_OPENAI_KEY, PRIVATE_ASSISTANT_ID, PRIVATE_GOOGLE_API_KEY } from "$env/static/private";
-import { error } from "@sveltejs/kit";
 import { PUBLIC_RECAPTCHA_KEY } from "$env/static/public";
+import { error } from "@sveltejs/kit";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
