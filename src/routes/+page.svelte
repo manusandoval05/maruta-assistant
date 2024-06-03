@@ -109,7 +109,6 @@
 				try {
 					const chunkText = new TextDecoder().decode(chunk);
 
-					console.log(chunkText);
 					const chunkJson = JSON.parse(chunkText);
 					if (chunkJson.event === 'thread.message.delta') {
 						chunkJson.data.delta.content.forEach((element) => {
