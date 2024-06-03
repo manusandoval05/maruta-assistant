@@ -298,7 +298,7 @@
 							</div>
 							
 							<div class="card text-left w-full max-h-48 p-4 overflow-y-auto" tabindex="-1">
-								<Autocomplete bind:input={currentMessage} options={questionOptions} on:selection={onQuestionSelection} />
+								<Autocomplete bind:input={currentMessage} regionButton={"text-left"} options={questionOptions} on:selection={onQuestionSelection} />
 							</div>
 
 						</section>
