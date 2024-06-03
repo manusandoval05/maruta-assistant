@@ -4,6 +4,8 @@
 	import { PUBLIC_RECAPTCHA_KEY } from '$env/static/public';
 	import { AUTOCOMPLETE_QUESTIONS } from '$lib/questions';
 
+	import favIcon from "$lib/favicon.png";
+
 	import { Autocomplete } from '@skeletonlabs/skeleton';
 	import type { AutocompleteOption } from '@skeletonlabs/skeleton';
 	interface Person {
@@ -181,6 +183,7 @@
 
 <svelte:head>
 	<title>Asistente de Mapa de Ruta</title>
+	<link rel="shortcut icon" href={favIcon} type="image/x-icon">
 	<script
 		src="https://www.google.com/recaptcha/enterprise.js?render=6LfxNe8pAAAAAK774on1iqk7BoKiSR6oOSwTbEz_"
 	></script>
